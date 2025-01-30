@@ -1,7 +1,13 @@
+using EduManage.Web.Data;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddDbContext<EduManageDbContext>(p => 
+    p.UseSqlServer(builder.Configuration.GetConnectionString("EduManageStrConnection")));
 
 var app = builder.Build();
 

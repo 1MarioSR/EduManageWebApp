@@ -13,6 +13,12 @@ namespace EduManage.Web.Controllers
             _logger = logger;
         }
 
+
+        public IActionResult Others()
+        {
+            return View();
+        }
+
         public IActionResult Index()
         {
             return View();
