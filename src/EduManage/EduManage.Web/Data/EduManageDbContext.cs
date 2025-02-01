@@ -5,11 +5,15 @@ namespace EduManage.Web.Data
 {
     public class EduManageDbContext : DbContext
     {
+        public EduManageDbContext()
+        {
+        }
+
         public EduManageDbContext(DbContextOptions<EduManageDbContext> options): base(options)
         {
         }
          
-        public DbSet<Students> students { get; set; }
+        public DbSet<Student>Students{ get; set; }
     } 
     
 }

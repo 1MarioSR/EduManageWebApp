@@ -1,0 +1,74 @@
+﻿@* @model List<EduManage.Web.Models.Entities.Student> *@
+    @model StudentsViewModel
+
+@{
+    ViewData["Title"] = "Student List";
+
+    // var infoOnlyActive = ViewBag.StudentInformation as List<EduManage.Web.Models.Entities.Student> ;
+}
+
+
+<p>
+    <a class="btn btn-primary" asp-action="Create">Create New</a>
+</p>
+<div class="text-center">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Lastname</th>
+                <th>Gender</th>
+            </tr>
+        </thead>
+
+
+
+        <tr>
+            <td colspan="4"> All Students</td>
+        </tr>
+        @foreach (var students in Model.AllStudents)
+        {
+            <tr>
+                <td>@students.Id</td>
+                <td>@students.Name</td>
+                <td>@students.Lastname</td>
+                <td>@students.Gender</td>
+                <td>
+                    <a class="btn btn-warning" asp-action="Edit" asp-route-id="@students.Id">Edit</a> |
+                    <a class="btn btn-info"    asp-action="Details" asp-route-id="@students.Id">Details</a> |
+                    <a class="btn btn-danger"  asp-action="Delete" asp-route-id="@students.Id">Delete</a>
+                </td>
+            </tr>
+
+        }
+        <tr>
+            <td colspan="4"> Active Students</td>
+        </tr>
+
+        @if (Model.ActiveStudents != null && Model.ActiveStudents.Any())
+        { 
+            @foreach (var students in Model.ActiveStudents)
+            {
+                <tr>
+                    <td>@students.Id</td>
+                    <td>@students.Name</td>
+                    <td>@students.Lastname</td>
+                    <td>@students.Gender</td>
+                    <td>
+                        <a class="btn btn-warning" asp-action="Edit" asp-route-id="@students.Id">Edit</a> |
+                        <a class="btn btn-info" asp-action="Details" asp-route-id="@students.Id">Details</a> |
+                        <a class="btn btn-danger" asp-action="Delete" asp-route-id="@students.Id">Delete</a>
+                    </td>
+               </tr>
+            }
+        }
+        else
+        {
+                <tr>
+                   <td colspan="4">No Active Students</td>
+               </tr>
+        }      
+                        
+    </table>
+</div>

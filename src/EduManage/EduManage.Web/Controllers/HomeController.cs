@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using EduManage.Web.Data;
 using EduManage.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -6,16 +7,16 @@ namespace EduManage.Web.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly EduManageDbContext _db;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(EduManageDbContext db)
         {
-            _logger = logger;
+            _db = db;
         }
-
 
         public IActionResult Others()
         {
+            var item = new EduManageController(_db);
             return View();
         }
 
