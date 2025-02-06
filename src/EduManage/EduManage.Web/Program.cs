@@ -9,6 +9,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<EduManageDbContext>(p => 
     p.UseSqlServer(builder.Configuration.GetConnectionString("EduManageStrConnection")));
 
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
