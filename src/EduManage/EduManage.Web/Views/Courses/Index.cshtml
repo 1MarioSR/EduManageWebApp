@@ -28,18 +28,18 @@
         <tr>
             <td colspan="4"> All Courses</td>
         </tr>
-        @foreach (var course in Model.AllCourses)
+        @foreach (var courses in Model.AllCourses)
         {
             <tr>
-                <td>@course.Id</td>
-                <td>@course.Name</td>
-                <td>@course.Description</td>
-                <td>@course.Credits</td>
-                <td>@course.Teachername</td>
+                <td>@courses.Id</td>
+                <td>@courses.Name</td>
+                <td>@courses.Description</td>
+                <td>@courses.Credits</td>
+                <td>@courses.Teachername</td>
                 <td>
-                    <a class="btn btn-warning" asp-action="Edit" asp-route-id="@course.Id">Edit</a> |
-                    <a class="btn btn-info" asp-action="Details" asp-route-id="@course.Id">Details</a> |
-                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@course.Id">Delete</a>
+                    <a class="btn btn-warning" asp-action="Edit" asp-route-id="@courses.Id">Edit</a> |
+                    <a class="btn btn-info" asp-action="Details" asp-route-id="@courses.Id">Details</a> |
+                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@courses.Id">Delete</a>
                 </td>
             </tr>
 

@@ -1,0 +1,47 @@
+﻿@* @model List<EduManage.Web.Models.Entities.Student> *@
+    @model EnrollmentsViewModel
+
+@{
+    ViewData["Title"] = "Enrollment List";
+
+    // var infoOnlyActive = ViewBag.StudentInformation as List<EduManage.Web.Models.Entities.Student> ;
+}
+
+
+<p>
+    <a class="btn btn-primary" asp-action="Create">Create New</a>
+</p>
+<div class="text-center">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Lastname</th>
+                <th>Gender</th>
+            </tr>
+        </thead>
+
+
+
+        <tr>
+            <td colspan="4"> All Enrollment</td>
+        </tr>
+        @foreach (var enrollments in Model.AllEnrollments)
+        {
+            <tr>
+                <td>@enrollments.Id</td>
+                <td>@enrollments.Name</td>
+                <td>@enrollments.Lastname</td>
+                <td>@enrollments.Gender</td>
+                <td>
+                    <a class="btn btn-warning" asp-action="Edit" asp-route-id="@enrollments.Id">Edit</a> |
+                    <a class="btn btn-info" asp-action="Details" asp-route-id="@enrollments.Id">Details</a> |
+                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@enrollments.Id">Delete</a>
+                </td>
+            </tr>
+
+        }
+        </table>
+  </div>     
+        

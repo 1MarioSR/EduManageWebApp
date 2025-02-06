@@ -5,12 +5,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 namespace EduManage.Web.Controllers
 {
-    public class CoursesController : Controller
+    public class EnrollmentsController : Controller
     {
         private readonly EduManageDbContext _context;
 
 
-        public CoursesController(EduManageDbContext context)
+        public EnrollmentsController(EduManageDbContext context)
         {
             _context = context;
         }
@@ -18,14 +18,14 @@ namespace EduManage.Web.Controllers
         public ActionResult Index()
         {
 
-            var vm = new CoursesViewModel();
-            var allCourses = _context.Courses.ToList();
+            var vm = new EnrollmentsViewModel();
+            var allEnrollments = _context.Enrollments.ToList();
            
             
             //ViewBag.StudentInformation = info2;
 
             //vm.ActiveStudents = activeStudents;
-            vm.AllCourses = allCourses;
+            vm.AllEnrollments = allEnrollments;
             return View(vm);
         }
 
@@ -37,14 +37,14 @@ namespace EduManage.Web.Controllers
                 return NotFound();
             }
 
-            var course = await _context.Courses
+            var enrollment = await _context.Enrollments
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (course == null)
+            if (enrollment == null)
             {
                 return NotFound();
             }
 
-            return View(course);
+            return View(enrollment);
         }
 
         // GET: Students1/Create
@@ -58,15 +58,15 @@ namespace EduManage.Web.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(Course courses)
+        public async Task<IActionResult> Create(Enrollment enrollments)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(courses);
+                _context.Add(enrollments);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(courses);
+            return View(enrollments);
         }
 
         // GET: Students1/Edit/5
@@ -77,12 +77,12 @@ namespace EduManage.Web.Controllers
                 return NotFound();
             }
 
-            var course = await _context.Courses.FindAsync(id);
-            if (course == null)
+            var enrollment = await _context.Enrollments.FindAsync(id);
+            if (enrollment == null)
             {
                 return NotFound();
             }
-            return View(course);
+            return View(enrollment);
         }
 
         // POST: Students1/Edit/5
@@ -90,9 +90,9 @@ namespace EduManage.Web.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Lastname,Gender,Email,IsActive")] Course course)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Lastname,Gender,Email,IsActive")] Enrollment enrollment)
         {
-            if (id != course.Id)
+            if (id != enrollment.Id)
             {
                 return NotFound();
             }
@@ -101,12 +101,12 @@ namespace EduManage.Web.Controllers
             {
                 try
                 {
-                    _context.Update(course);
+                    _context.Update(enrollment);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!CourseExists(course.Id))
+                    if (!EnrollmentExists(enrollment.Id))
                     {
                         return NotFound();
                     }
@@ -117,7 +117,7 @@ namespace EduManage.Web.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(course);
+            return View(enrollment);
         }
 
         // GET: Students1/Delete/5
@@ -128,14 +128,14 @@ namespace EduManage.Web.Controllers
                 return NotFound();
             }
 
-            var course = await _context.Courses
+            var enrollment = await _context.Enrollments
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (course == null)
+            if (enrollment == null)
             {
                 return NotFound();
             }
 
-            return View(course);
+            return View(enrollment);
         }
 
         // POST: Students1/Delete/5
@@ -143,19 +143,19 @@ namespace EduManage.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var course = await _context.Courses.FindAsync(id);
-            if (course != null)
+            var enrollment = await _context.Enrollments.FindAsync(id);
+            if (enrollment != null)
             {
-                _context.Courses.Remove(course);
+                _context.Enrollments.Remove(enrollment);
             }
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool CourseExists(int id)
+        private bool EnrollmentExists(int id)
         {
-            return _context.Courses.Any(e => e.Id == id);
+            return _context.Enrollments.Any(e => e.Id == id);
         }
     }
 }
