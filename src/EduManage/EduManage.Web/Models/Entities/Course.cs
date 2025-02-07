@@ -9,5 +9,6 @@ namespace EduManage.Web.Models.Entities
         public required string Description { get; set; }
         public required int Credits { get; set; }
         public required string Teachername { get; set; }
+        
     }
 }

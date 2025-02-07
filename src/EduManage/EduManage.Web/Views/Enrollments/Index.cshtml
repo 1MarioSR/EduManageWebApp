@@ -17,8 +17,9 @@
             <tr>
                 <th>Id</th>
                 <th>Name</th>
-                <th>Lastname</th>
-                <th>Gender</th>
+                <th>Enrollment Date</th>
+                <th>Grade</th>
+                
             </tr>
         </thead>
 
@@ -32,8 +33,9 @@
             <tr>
                 <td>@enrollments.Id</td>
                 <td>@enrollments.Name</td>
-                <td>@enrollments.Lastname</td>
-                <td>@enrollments.Gender</td>
+                <td>@enrollments.Enrollment_date</td>
+                <td>@enrollments.Grade</td>
+                
                 <td>
                     <a class="btn btn-warning" asp-action="Edit" asp-route-id="@enrollments.Id">Edit</a> |
                     <a class="btn btn-info" asp-action="Details" asp-route-id="@enrollments.Id">Details</a> |

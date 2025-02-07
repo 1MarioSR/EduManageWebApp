@@ -22,14 +22,14 @@ namespace EduManage.Web.Controllers
             var allEnrollments = _context.Enrollments.ToList();
            
             
-            //ViewBag.StudentInformation = info2;
+           
 
-            //vm.ActiveStudents = activeStudents;
+            
             vm.AllEnrollments = allEnrollments;
             return View(vm);
         }
 
-        // GET: Students1/Details/5
+        // GET: Enrollments1/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -47,13 +47,13 @@ namespace EduManage.Web.Controllers
             return View(enrollment);
         }
 
-        // GET: Students1/Create
+        // GET: Enrollments1/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Students1/Create
+        // POST: Enrollments1/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -69,7 +69,7 @@ namespace EduManage.Web.Controllers
             return View(enrollments);
         }
 
-        // GET: Students1/Edit/5
+        // GET: Enrollments1/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -85,12 +85,12 @@ namespace EduManage.Web.Controllers
             return View(enrollment);
         }
 
-        // POST: Students1/Edit/5
+        // POST: Enrollments1/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Lastname,Gender,Email,IsActive")] Enrollment enrollment)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,enrollment_date,grade")] Enrollment enrollment)
         {
             if (id != enrollment.Id)
             {
@@ -120,7 +120,7 @@ namespace EduManage.Web.Controllers
             return View(enrollment);
         }
 
-        // GET: Students1/Delete/5
+        // GET: Enrollments1/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -138,7 +138,7 @@ namespace EduManage.Web.Controllers
             return View(enrollment);
         }
 
-        // POST: Students1/Delete/5
+        // POST: Enrollments1/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

@@ -6,9 +6,11 @@ namespace EduManage.Web.Models.Entities
     {
         [Key]
         public int Id { get; set; }
-        public required string Name { get; set; }
-        public required string Lastname { get; set; }
-        public required string Gender { get; set; }
+
+        public string Name { get; set; }
+        public DateTime Enrollment_date { get; set; }
+        public int Grade { get; set; }
+
 
     }
 }
