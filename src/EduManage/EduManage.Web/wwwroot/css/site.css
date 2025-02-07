@@ -1,22 +1,105 @@
+/* Configuración de fuente base */
 html {
-  font-size: 14px;
+    font-size: 14px;
+    font-family: 'Roboto', Arial, sans-serif;
+    background-color: #f9fafb;
+    color: #333;
+    scroll-behavior: smooth;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+/* Botones mejorados */
+.btn {
+    background-color: #258cfb;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    transition: all 0.3s ease;
 }
 
+    .btn:hover {
+        background-color: #1763c1;
+        transform: translateY(-2px);
+    }
+
+    .btn:focus,
+    .btn:active:focus,
+    .btn-link.nav-link:focus,
+    .form-control:focus,
+    .form-check-input:focus {
+        box-shadow: 0 0 0 0.1rem #fff, 0 0 0 0.25rem #258cfb;
+        outline: none;
+    }
+
+/* Mejora del cuerpo y pie de página */
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    background-color: #ffffff;
+    line-height: 1.6;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: #258cfb;
+    color: #fff;
+    text-align: center;
+    padding: 15px 0;
+    font-size: 0.9rem;
+}
+
+    footer a {
+        color: #fff;
+        text-decoration: underline;
+    }
+
+        footer a:hover {
+            color: #d9f3ff;
+        }
+
+/* Formularios */
+.form-control {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+    .form-control:focus {
+        border-color: #258cfb;
+        box-shadow: 0 0 8px rgba(37, 140, 251, 0.5);
+    }
+
+/* Elementos generales */
+h1, h2, h3, h4, h5, h6 {
+    color: #258cfb;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+a {
+    color: #258cfb;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+    a:hover {
+        color: #1763c1;
+    }
+
+/* Transiciones suaves */
+* {
+    transition: all 0.3s ease;
 }

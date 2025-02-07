@@ -4,78 +4,128 @@
 @{
     ViewData["Title"] = "Student List";
 
-    // var infoOnlyActive = ViewBag.StudentInformation as List<EduManage.Web.Models.Entities.Student> ;
+     var infoOnlyActive = ViewBag.StudentInformation as List<EduManage.Web.Models.Entities.Student> ;
 }
 
 
-<p>
-    <a class="btn btn-primary" asp-action="Create">Create New</a>
-</p>
-<div class="text-center">
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Lastname</th>
-                <th>Gender</th>
-                <th>Email</th>
-                <th>IsActive</th>
-                
-            </tr>
-        </thead>
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="text-primary">All Students</h2>
+    <a class="btn btn-primary" asp-action="Create">
+        <i class="bi bi-plus-circle"></i> Create New
+    </a>
+</div>
 
-
-
-        <tr>
-            <td colspan="4"> All Students</td>
-        </tr>
-        @foreach (var students in Model.AllStudents)
-        {
-            <tr>
-                <td>@students.Id</td>
-                <td>@students.Name</td>
-                <td>@students.Lastname</td>
-                <td>@students.Gender</td>
-                <td>@students.Email</td>
-                <td>@students.IsActive</td>
-                <td>
-                    <a class="btn btn-warning" asp-action="Edit" asp-route-id="@students.Id">Edit</a> |
-                    <a class="btn btn-info"    asp-action="Details" asp-route-id="@students.Id">Details</a> |
-                    <a class="btn btn-danger"  asp-action="Delete" asp-route-id="@students.Id">Delete</a>
-                </td>
-            </tr>
-
-        }
-        <tr>
-            <td colspan="4"> Active Students</td>
-        </tr>
-
-        @if (Model.ActiveStudents != null && Model.ActiveStudents.Any())
-        { 
-            @foreach (var students in Model.ActiveStudents)
-            {
+<div class="card shadow-sm">
+    <div class="card-body">
+        <h4 class="text-secondary">All Students</h4>
+        <table class="table table-striped table-hover text-center">
+            <thead class="table-dark">
                 <tr>
-                    <td>@students.Id</td>
-                    <td>@students.Name</td>
-                    <td>@students.Lastname</td>
-                    <td>@students.Gender</td>
-                    <td>@students.Email</td>
-                    <td>@students.IsActive</td>
-                    <td>
-                        <a class="btn btn-warning" asp-action="Edit" asp-route-id="@students.Id">Edit</a> |
-                        <a class="btn btn-info" asp-action="Details" asp-route-id="@students.Id">Details</a> |
-                        <a class="btn btn-danger" asp-action="Delete" asp-route-id="@students.Id">Delete</a>
-                    </td>
-               </tr>
-            }
-        }
-        else
-        {
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Lastname</th>
+                    <th>Gender</th>
+                    <th>Email</th>
+                    <th>Is Active</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.AllStudents != null && Model.AllStudents.Any())
+                {
+                    @foreach (var student in Model.AllStudents)
+                    {
+                        <tr>
+                            <td>@student.Id</td>
+                            <td>@student.Name</td>
+                            <td>@student.Lastname</td>
+                            <td>@student.Gender</td>
+                            <td>@student.Email</td>
+                            <td>
+                                @if (student.IsActive)
+                                {
+                                    <span class="badge bg-success">Active</span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-secondary">Inactive</span>
+                                }
+                            </td>
+                            <td>
+                                <a class="btn btn-warning btn-sm" asp-action="Edit" asp-route-id="@student.Id">
+                                    <i class="bi bi-pencil-square"></i> Edit
+                                </a>
+                                <a class="btn btn-info btn-sm" asp-action="Details" asp-route-id="@student.Id">
+                                    <i class="bi bi-info-circle"></i> Details
+                                </a>
+                                <a class="btn btn-danger btn-sm" asp-action="Delete" asp-route-id="@student.Id">
+                                    <i class="bi bi-trash"></i> Delete
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="7" class="text-muted">No students found.</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="card shadow-sm mt-5">
+    <div class="card-body">
+        <h4 class="text-secondary">Active Students</h4>
+        <table class="table table-striped table-hover text-center">
+            <thead class="table-dark">
                 <tr>
-                   <td colspan="4">No Active Students</td>
-               </tr>
-        }      
-                        
-    </table>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Lastname</th>
+                    <th>Gender</th>
+                    <th>Email</th>
+                    <th>Is Active</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.ActiveStudents != null && Model.ActiveStudents.Any())
+                {
+                    @foreach (var student in Model.ActiveStudents)
+                    {
+                        <tr>
+                            <td>@student.Id</td>
+                            <td>@student.Name</td>
+                            <td>@student.Lastname</td>
+                            <td>@student.Gender</td>
+                            <td>@student.Email</td>
+                            <td>
+                                <span class="badge bg-success">Active</span>
+                            </td>
+                            <td>
+                                <a class="btn btn-warning btn-sm" asp-action="Edit" asp-route-id="@student.Id">
+                                    <i class="bi bi-pencil-square"></i> Edit
+                                </a>
+                                <a class="btn btn-info btn-sm" asp-action="Details" asp-route-id="@student.Id">
+                                    <i class="bi bi-info-circle"></i> Details
+                                </a>
+                                <a class="btn btn-danger btn-sm" asp-action="Delete" asp-route-id="@student.Id">
+                                    <i class="bi bi-trash"></i> Delete
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="7" class="text-muted">No active students found.</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
 </div>

@@ -4,46 +4,62 @@
 @{
     ViewData["Title"] = "Course List";
 
-    // var infoOnlyActive = ViewBag.StudentInformation as List<EduManage.Web.Models.Entities.Student> ;
+    
 }
 
 
-<p>
-    <a class="btn btn-primary" asp-action="Create">Create New</a>
-</p>
-<div class="text-center">
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Credits</th>
-                <th>Teachername</th>
-            </tr>
-        </thead>
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="text-primary">All Courses</h2>
+    <a class="btn btn-primary" asp-action="Create">
+        <i class="bi bi-plus-circle"></i> Create New
+    </a>
+</div>
 
-
-
-        <tr>
-            <td colspan="4"> All Courses</td>
-        </tr>
-        @foreach (var courses in Model.AllCourses)
-        {
-            <tr>
-                <td>@courses.Id</td>
-                <td>@courses.Name</td>
-                <td>@courses.Description</td>
-                <td>@courses.Credits</td>
-                <td>@courses.Teachername</td>
-                <td>
-                    <a class="btn btn-warning" asp-action="Edit" asp-route-id="@courses.Id">Edit</a> |
-                    <a class="btn btn-info" asp-action="Details" asp-route-id="@courses.Id">Details</a> |
-                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@courses.Id">Delete</a>
-                </td>
-            </tr>
-
-        }
+<div class="card shadow-sm">
+    <div class="card-body">
+        <table class="table table-striped table-hover text-center">
+            <thead class="table-dark">
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Credits</th>
+                    <th>Teacher Name</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.AllCourses != null && Model.AllCourses.Any())
+                {
+                    @foreach (var course in Model.AllCourses)
+                    {
+                        <tr>
+                            <td>@course.Id</td>
+                            <td>@course.Name</td>
+                            <td>@course.Description</td>
+                            <td>@course.Credits</td>
+                            <td>@course.Teachername</td>
+                            <td>
+                                <a class="btn btn-warning btn-sm" asp-action="Edit" asp-route-id="@course.Id">
+                                    <i class="bi bi-pencil-square"></i> Edit
+                                </a>
+                                <a class="btn btn-info btn-sm" asp-action="Details" asp-route-id="@course.Id">
+                                    <i class="bi bi-info-circle"></i> Details
+                                </a>
+                                <a class="btn btn-danger btn-sm" asp-action="Delete" asp-route-id="@course.Id">
+                                    <i class="bi bi-trash"></i> Delete
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="6" class="text-muted">No courses available.</td>
+                    </tr>
+                }
+            </tbody>
         </table>
-  </div>     
-        
+    </div>
+</div>

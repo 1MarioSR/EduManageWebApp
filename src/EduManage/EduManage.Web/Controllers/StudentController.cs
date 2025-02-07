@@ -24,7 +24,7 @@ namespace EduManage.Web.Controllers
                 .Where(st => st.IsActive && !st.IsActive).ToList();
             //ViewBag.StudentInformation = info2;
 
-            //vm.ActiveStudents = activeStudents;
+            vm.ActiveStudents = activeStudents;
             vm.AllStudents = allStudents;
             return View(vm);
         }
