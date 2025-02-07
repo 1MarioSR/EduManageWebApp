@@ -90,7 +90,7 @@ namespace EduManage.Web.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,enrollment_date,grade")] Enrollment enrollment)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Enrollment_date,Grade")] Enrollment enrollment)
         {
             if (id != enrollment.Id)
             {
