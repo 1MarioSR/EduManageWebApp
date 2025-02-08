@@ -4,7 +4,7 @@
 @{
     ViewData["Title"] = "Student List";
 
-     var infoOnlyActive = ViewBag.StudentInformation as List<EduManage.Web.Models.Entities.Student> ;
+     
 }
 
 
@@ -31,7 +31,7 @@
                 </tr>
             </thead>
             <tbody>
-                @if (Model.AllStudents != null && Model.AllStudents.Any())
+                @if (Model.AllStudents != null && Model.AllStudents.Any()) 
                 {
                     @foreach (var student in Model.AllStudents)
                     {
@@ -92,7 +92,7 @@
                 </tr>
             </thead>
             <tbody>
-                @if (Model.ActiveStudents != null && Model.ActiveStudents.Any())
+                @if (Model.ActiveStudents != null && Model.ActiveStudents.Any()) 
                 {
                     @foreach (var student in Model.ActiveStudents)
                     {

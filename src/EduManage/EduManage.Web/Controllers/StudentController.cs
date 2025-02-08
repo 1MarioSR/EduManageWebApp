@@ -20,8 +20,7 @@ namespace EduManage.Web.Controllers
 
             var vm = new StudentsViewModel();
             var allStudents = _context.Students.ToList();
-            var activeStudents = _context.Students
-                .Where(st => st.IsActive && !st.IsActive).ToList();
+            var activeStudents = _context.Students.Where(static st => st.IsActive && !st.IsActive).ToList();
             //ViewBag.StudentInformation = info2;
 
             vm.ActiveStudents = activeStudents;
